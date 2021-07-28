@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'kvkk'
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: 'kvkkUser'
+      # You can use whatever password you like
+      MYSQL_PASSWORD: 'Arge_2k1920_kvkk'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'q1w2e3r4'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+      # Where our data will be persisted
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+# Names our volume
+volumes:
+ mysql_data:

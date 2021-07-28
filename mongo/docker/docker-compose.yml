@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+#  app:
+#    build: .
+#    env_file: .env
+#    environment:
+#      DB_HOST: 'mongodb://mongodb'
+
+  mongodb:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: q1w2e3r4
+      DB_NAME: your_db_name
+      DB_USER: your_db_user
+      DB_PASSWORD: your_db_user_password
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo_data:/data/db
+      - ./mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh
